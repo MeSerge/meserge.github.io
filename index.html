@@ -5,11 +5,43 @@
     <title>Моя тестовая страница</title>
   </head>
   <body>
-    <h1>First headline</h1>
-    <img src="images/website-screenshot.png" alt="Моё тестовое изображение">
+
+    <h1>Это заголовок страницы</h1>
+    <h2>Страница для обучения и изучения</h2>
+    <img src="images/website-screenshot.png" title="Моё тестовое изображение">
+    <br>
+    <button data-btn="first">Нажми на эту кнопку</button>
+    <button data-btn="sleep">хочу спать</button>
+    <button data-btn="another" data-btn-text='хуй пизда'>иное</button>
+    
 
     <script>
-      alert('Вывожу тест с помощью скрипта');
+      const buttons = document.querySelectorAll("[data-btn]");
+
+      if( buttons && typeof buttons === "object" ) {
+        buttons.forEach((item, index) => {
+
+          if( item.dataset.btn === "first" ) {      
+            item.addEventListener('click', (e) => {
+              alert('хочу кушац!:с');
+            });
+          }
+        
+          if( item.dataset.btn === "sleep" ) {      
+            item.addEventListener('click', (e) => {
+              alert('Доброй ночи! 😴');
+            });
+          }
+
+          if( item.dataset.btn === "another" ) {      
+            item.addEventListener('click', (e) => {
+              alert(item.dataset.btnText);
+            });
+          }
+
+        });
+      }
     </script>
+
   </body>
 </html> 
